@@ -67,9 +67,9 @@ def Generate():
         #-1 because i will start with one
         Encrypted_Character_Set[Character_Set[Character_List[i-1]]] = Character_List[IntergerChosen-1] #in the new encrypted character set the key of the alphabet letter will have a value of the alphabet chosen
     #Generating Key
-    for i in range(10): #It will loop ten times
-        number = random.randint(1, 63)
-        key = key + Character_List[number]
+    for i in range(10): #it will loop about 10 times
+        number = random.randint(0, 61)
+        key = key + Password_List[number]
     print("Your Encryption Key is:", key)
     with open(f"{key}.json", "w") as file:
         json.dump(Encrypted_Character_Set, file)
