@@ -55,21 +55,19 @@ Character_List = list(Character_Set.keys())
 Password_List = list(Password_Set.keys())
 
 def Generate():
-    Encrypted_Character_Set = {}
-    Characterchanged=[]
-    CharacterUsed=[]
+    Encrypted_Character_Set = {} #the encrypyed characters
     exceptions=[]
     key=""
+    #shuffling the alphabets
     for i in range(len(Character_List)):
-        all_numbers = set(range(1, 96))
-        allowed_numbers = list(all_numbers - set(exceptions))
-        IntergerChosen = random.choice(allowed_numbers)
-        exceptions.append(IntergerChosen)
-        Encrypted_Character_Set[Character_Set[Character_List[i-1]]] = Character_List[IntergerChosen-1]
-        CharacterUsed.append(Character_List[IntergerChosen-1])
-        Characterchanged.append(Character_List[IntergerChosen-1])
+        all_characters = set(range(1, 96)) #set containing integer from 1 to 96
+        allowed_characters = list(all_characters - set(exceptions)) #shows the list of available integers
+        IntergerChosen = random.choice(allowed_characters) #Picks a random integer that is still available
+        exceptions.append(IntergerChosen) #used for exceptions later
+        #-1 because i will start with one
+        Encrypted_Character_Set[Character_Set[Character_List[i-1]]] = Character_List[IntergerChosen-1] #in the new encrypted character set the key of the alphabet letter will have a value of the alphabet chosen
     #Generating Key
-    for i in range(10):
+    for i in range(10): #It will loop ten times
         number = random.randint(1, 63)
         key = key + Character_List[number]
     print("Your Encryption Key is:", key)
